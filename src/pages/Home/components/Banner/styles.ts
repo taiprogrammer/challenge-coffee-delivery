@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import background from "../../assets/img/background.png";
+import background from "../../../../assets/img/background.png";
 
 export const ContainerBanner = styled.section`
   padding: 0 10rem;
   background: url(${background});
   background-size: cover;
+  position: relative;
 `;
 
 export const ContentBanner = styled.aside`
