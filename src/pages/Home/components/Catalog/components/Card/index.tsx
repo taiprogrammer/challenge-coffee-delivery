@@ -5,6 +5,7 @@ import {
   Apresentation,
   BuyProduct,
   CardContainer,
+  ContainerFlags,
   Flag,
   Price,
   ProductInfo,
@@ -15,7 +16,9 @@ export function Card() {
     <CardContainer>
       <Apresentation>
         <img src="/catalog/Type=Expresso.png" alt="" />
-        <Flag>TRADICIONAL</Flag>
+        <ContainerFlags>
+          <Flag>TRADICIONAL</Flag>
+        </ContainerFlags>
       </Apresentation>
       <ProductInfo>
         <h2>Expresso Tradicional</h2>

@@ -24,6 +24,13 @@ export const Apresentation = styled.header`
   margin-top: -1.25rem;
 `;
 
+export const ContainerFlags = styled.div`
+  gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
 export const Flag = styled.span`
   color: ${(props) => props.theme.yellowDark};
   background: ${(props) => props.theme.yellowLight};
@@ -35,12 +42,6 @@ export const Flag = styled.span`
   padding: 0.25rem 0.5rem;
 
   border-radius: 8px;
-
-  & span + span {
-    gap: 0.25rem;
-    display: flex;
-    align-items: center;
-  }
 `;
 
 export const ProductInfo = styled.main`
