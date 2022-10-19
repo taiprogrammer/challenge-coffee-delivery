@@ -9,8 +9,8 @@ export const CardContainer = styled.aside`
   flex-direction: column;
   justify-content: center;
 
+  padding: 1.25rem;
   margin-top: 2.125rem;
-  padding-bottom: 1.25rem;
 
   border-radius: 6px 36px;
 `;
@@ -21,7 +21,7 @@ export const Apresentation = styled.header`
   align-items: center;
   flex-direction: column;
 
-  margin-top: -1.25rem;
+  margin-top: -2.45rem;
 `;
 
 export const ContainerFlags = styled.div`

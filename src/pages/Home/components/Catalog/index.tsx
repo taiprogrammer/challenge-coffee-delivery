@@ -11,6 +11,8 @@ export function Catalog() {
         <Card />
         <Card />
         <Card />
+        <Card />
+        <Card />
       </ContainerProducts>
     </CatalogContainer>
   );

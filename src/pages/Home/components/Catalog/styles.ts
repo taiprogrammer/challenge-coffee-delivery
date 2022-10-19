@@ -15,6 +15,6 @@ export const TitleCatalog = styled.h1`
 export const ContainerProducts = styled.aside`
   gap: 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-bottom: 9.375rem;
+  grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
 `;
