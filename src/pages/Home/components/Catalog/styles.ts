@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const CatalogContainer = styled.section`
-  padding: 0 10rem;
-  margin-top: 2rem;
+  width: 85%;
+  margin: 2rem auto;
 `;
 
 export const TitleCatalog = styled.h1`
@@ -16,5 +16,5 @@ export const ContainerProducts = styled.aside`
   gap: 2rem;
   display: grid;
   padding-bottom: 9.375rem;
-  grid-template-columns: 16rem 16rem 16rem 16rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
