@@ -1,4 +1,3 @@
-import { ShoppingCart } from "phosphor-react";
 import { Banner } from "./components/Banner";
 import { Catalog } from "./components/Catalog";
 

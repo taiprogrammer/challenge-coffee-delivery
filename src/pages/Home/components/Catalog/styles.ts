@@ -16,5 +16,5 @@ export const ContainerProducts = styled.aside`
   gap: 2rem;
   display: grid;
   padding-bottom: 9.375rem;
-  grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
+  grid-template-columns: 16rem 16rem 16rem 16rem;
 `;
