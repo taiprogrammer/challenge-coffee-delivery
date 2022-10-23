@@ -8,16 +8,21 @@ export const ContainerProduct = styled.div`
   padding-bottom: 2.094rem;
   border-bottom: 1px solid ${(props) => props.theme.baseButton};
 
+  width: 100%;
+
   img {
     height: 4rem;
   }
 `;
 
 export const ContainerProductInfo = styled.aside`
+  width: 100%;
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    width: 100%;
 
     span {
       font-size: 1rem;

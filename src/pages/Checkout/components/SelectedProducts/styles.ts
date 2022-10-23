@@ -24,7 +24,9 @@ export const ContainerOverview = styled.div`
   align-items: flex-start;
 `;
 
-export const ContainerProducts = styled.main``;
+export const ContainerProducts = styled.main`
+  width: 100%;
+`;
 
 export const ContainerReviewPrice = styled.section`
   gap: 0.844rem;
