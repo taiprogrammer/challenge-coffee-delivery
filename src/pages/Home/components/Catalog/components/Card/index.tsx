@@ -1,4 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
+import currency from "currency.js";
 
 import {
   AddToCart,
@@ -11,23 +12,33 @@ import {
   ProductInfo,
 } from "./styles";
 
-export function Card() {
+interface CardProps {
+  image: string;
+  type: string[];
+  name: string;
+  description: string;
+  price: number;
+}
+
+export function Card({ image, type, name, description, price }: CardProps) {
   return (
     <CardContainer>
       <Apresentation>
-        <img src="/catalog/Type=Expresso.png" alt="" />
+        <img src={image} alt="" />
         <ContainerFlags>
-          <Flag>TRADICIONAL</Flag>
+          {type.map((item) => (
+            <Flag>{item}</Flag>
+          ))}
         </ContainerFlags>
       </Apresentation>
       <ProductInfo>
-        <h2>Expresso Tradicional</h2>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h2>{name}</h2>
+        <p>{description}</p>
       </ProductInfo>
       <BuyProduct>
         <Price>
           <span>R$</span>
-          <h2>9,00</h2>
+          <h2>{price}</h2>
         </Price>
         <AddToCart>
           <input type="number" placeholder="1" />
