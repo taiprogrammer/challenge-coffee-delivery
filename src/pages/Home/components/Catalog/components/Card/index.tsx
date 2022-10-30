@@ -21,6 +21,10 @@ interface CardProps {
 }
 
 export function Card({ image, type, name, description, price }: CardProps) {
+  const formattedPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
   return (
     <CardContainer>
       <Apresentation>
@@ -37,8 +41,7 @@ export function Card({ image, type, name, description, price }: CardProps) {
       </ProductInfo>
       <BuyProduct>
         <Price>
-          <span>R$</span>
-          <h2>{price}</h2>
+          <h2>{formattedPrice}</h2>
         </Price>
         <AddToCart>
           <input type="number" placeholder="1" />
