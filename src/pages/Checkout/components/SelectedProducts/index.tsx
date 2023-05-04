@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import { DeliveryContext } from "../../../../contexts/DeliveryContext";
 import { Product } from "./components/Product";
 import {
   ConfirmButton,
@@ -11,12 +13,30 @@ import {
 } from "./styles";
 
 export function SelectedProducts() {
+  const { cartProducts, fetchCartProducts } = useContext(DeliveryContext);
+
+  useEffect(() => {
+    fetchCartProducts();
+  }, []);
+
   return (
     <ContainerSelectedProducts>
       <h1>Cafés selecionados</h1>
       <ContainerOverview>
         <ContainerProducts>
-          <Product />
+          {cartProducts.map((item) => {
+            return (
+              <Product
+                id={item.id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                serial={item.serial}
+                key={item.serial}
+              />
+            );
+          })}
         </ContainerProducts>
         <ContainerReviewPrice>
           <PriceItems>

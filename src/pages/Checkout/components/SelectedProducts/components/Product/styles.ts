@@ -5,6 +5,7 @@ export const ContainerProduct = styled.div`
   display: flex;
   align-items: flex-start;
 
+  margin-top: 0.5rem;
   padding-bottom: 2.094rem;
   border-bottom: 1px solid ${(props) => props.theme.baseButton};
 

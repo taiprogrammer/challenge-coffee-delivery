@@ -3,6 +3,7 @@ import { PaymentMethod } from "../PaymentMethod";
 import {
   AddressForm,
   BaseInput,
+  ButtonSave,
   CepInput,
   ComplementoInput,
   ContainerColumn,
@@ -12,12 +13,43 @@ import {
   HeaderInfo,
   TitleAddress,
 } from "./styles";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { DeliveryContext } from "../../../../contexts/DeliveryContext";
+import { useForm } from "react-hook-form";
+
+const newAddressFormSchema = z.object({
+  zip: z.string(),
+  street: z.string(),
+  number: z.number(),
+  complement: z.string(),
+  neighbourhood: z.string(),
+  city: z.string(),
+  state: z.string(),
+});
+
+type NewAddressFormInputs = z.infer<typeof newAddressFormSchema>;
 
 export function Address() {
+  const { addAddress } = useContext(DeliveryContext);
+
+  const { register, handleSubmit } = useForm<NewAddressFormInputs>({
+    resolver: zodResolver(newAddressFormSchema),
+  });
+
+  async function handleAddAddress(data: NewAddressFormInputs) {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 2000);
+    });
+
+    addAddress(data);
+  }
+
   return (
     <div>
       <TitleAddress>Complete seu pedido</TitleAddress>
-      <AddressForm>
+      <AddressForm onSubmit={handleSubmit(handleAddAddress)}>
         <ContainerHeaderForm>
           <MapPinLine color="#C47F17" size={20} />
           <HeaderInfo>
@@ -27,18 +59,36 @@ export function Address() {
         </ContainerHeaderForm>
         <ContainerDataAddress>
           <ContainerColumn>
-            <CepInput type="text" placeholder="CEP" />
-            <BaseInput type="text" placeholder="Rua" />
+            <CepInput
+              required
+              type="text"
+              placeholder="CEP"
+              {...register("zip")}
+            />
+            <BaseInput type="text" placeholder="Rua" {...register("street")} />
           </ContainerColumn>
           <ContainerRow>
-            <BaseInput type="number" placeholder="Número" />
-            <ComplementoInput type="text" placeholder="Complemento" />
+            <BaseInput
+              type="number"
+              placeholder="Número"
+              {...register("number", { valueAsNumber: true })}
+            />
+            <ComplementoInput
+              type="text"
+              placeholder="Complemento"
+              {...register("complement")}
+            />
           </ContainerRow>
           <ContainerRow>
-            <BaseInput type="text" placeholder="Bairro" />
-            <BaseInput type="text" placeholder="Cidade" />
-            <BaseInput type="text" placeholder="UF" />
+            <BaseInput
+              type="text"
+              placeholder="Bairro"
+              {...register("neighbourhood")}
+            />
+            <BaseInput type="text" placeholder="Cidade" {...register("city")} />
+            <BaseInput type="text" placeholder="UF" {...register("state")} />
           </ContainerRow>
+          <ButtonSave type="submit">CADASTRAR</ButtonSave>
         </ContainerDataAddress>
       </AddressForm>
       <PaymentMethod />

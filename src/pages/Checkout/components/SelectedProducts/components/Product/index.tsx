@@ -6,17 +6,37 @@ import {
   RemoveButton,
 } from "./styles";
 
-export function Product() {
+interface ProductProps {
+  id: string;
+  image: string;
+  name: string;
+  quantity: number;
+  price: number;
+  serial: number;
+}
+
+export function Product({
+  id,
+  image,
+  name,
+  quantity,
+  price,
+  serial,
+}: ProductProps) {
+  const formattedPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
   return (
     <ContainerProduct>
-      <img src="/catalog/Type=Expresso.png" alt="" />
+      <img src={image} alt={name} />
       <ContainerProductInfo>
         <header>
-          <span>Expresso Tradicional</span>
-          <h2>R$ 9,90</h2>
+          <span>{name}</span>
+          <h2>{formattedPrice}</h2>
         </header>
         <footer>
-          <QuantityInput type="number" value="1" />
+          <QuantityInput type="number" value={quantity} />
           <RemoveButton>
             <Trash />
             <span>REMOVER</span>

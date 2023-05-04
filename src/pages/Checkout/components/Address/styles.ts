@@ -88,3 +88,19 @@ export const CepInput = styled(BaseInput)`
 export const ComplementoInput = styled(BaseInput)`
   flex: 1;
 `;
+
+export const ButtonSave = styled.button`
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  padding: 0.8rem 2rem;
+  border-radius: 0.4rem;
+
+  color: ${(props) => props.theme.baseText};
+  background: ${(props) => props.theme.purpleLight};
+  border: 1.5px solid ${(props) => props.theme.purpleDark};
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
