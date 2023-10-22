@@ -167,28 +167,12 @@
   ],
   "cart-products": [
     {
-      "id": "americano",
-      "image": "/catalog/Type=Americano.png",
-      "name": "Expresso Americano",
-      "quantity": 2,
-      "price": 10,
-      "serial": 2
-    },
-    {
-      "id": "expresso",
-      "image": "/catalog/Type=Expresso.png",
-      "name": "Expresso Tradicional",
-      "quantity": 1,
+      "id": "capuccino",
+      "image": "/catalog/Type=Capuccino.png",
+      "name": "Capuccino",
       "price": 9.9,
-      "serial": 1
-    },
-    {
-      "id": "gelado",
-      "image": "/catalog/Type=Café Gelado.png",
-      "name": "Expresso Gelado",
       "quantity": 1,
-      "price": 8.9,
-      "serial": 4
+      "serial": 7
     }
   ],
   "address": {

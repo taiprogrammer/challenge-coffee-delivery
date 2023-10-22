@@ -90,6 +90,7 @@ export const ComplementoInput = styled(BaseInput)`
 `;
 
 export const ButtonSave = styled.button`
+  width: 100%;
   cursor: pointer;
   margin-top: 1rem;
   font-size: 0.875rem;

@@ -39,7 +39,8 @@ export function Card({
   }).format(price);
 
   const { addToCart } = useContext(DeliveryContext);
-  const [quantity, setQuantity] = useState<string>("");
+  const [quantity, setQuantity] = useState<string>("1");
+  
 
   function handleAddToCart() {
     const payload = {
@@ -77,6 +78,7 @@ export function Card({
             type="number"
             placeholder="1"
             onChange={(event) => setQuantity(event.target.value)}
+            value={quantity}
           />
           <button onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={18} />

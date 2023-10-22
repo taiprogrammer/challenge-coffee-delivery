@@ -15,6 +15,30 @@ import {
 export function SelectedProducts() {
   const { cartProducts, fetchCartProducts } = useContext(DeliveryContext);
 
+  const sumPrices = cartProducts.reduce(
+    (acc, current) => acc + (current.quantity * current.price),
+    0
+  );
+
+  const shipping = sumPrices > 0 ? 3.9 : 0;
+
+  const totalPrice = sumPrices + shipping;
+
+  const formattedPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(sumPrices);
+
+  const formattedShipping = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(shipping);
+
+  const formattedTotalPrice = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(totalPrice);
+
   useEffect(() => {
     fetchCartProducts();
   }, []);
@@ -41,15 +65,15 @@ export function SelectedProducts() {
         <ContainerReviewPrice>
           <PriceItems>
             <h2>Total de itens</h2>
-            <span>R$ 29,70</span>
+            <span>{formattedPrice}</span>
           </PriceItems>
           <PriceShip>
             <h2>Entrega</h2>
-            <span>R$ 3,50</span>
+            <span>{formattedShipping}</span>
           </PriceShip>
           <TotalPrice>
             <h2>Total</h2>
-            <h2>R$ 33,20</h2>
+            <h2>{formattedTotalPrice}</h2>
           </TotalPrice>
         </ContainerReviewPrice>
         <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>

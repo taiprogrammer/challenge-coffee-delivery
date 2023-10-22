@@ -1,9 +1,5 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { api } from "../lib/axios";
-
-const TypeCoffee = {
-  tradicional: "TRADICIONAL",
-};
 
 interface PaymentMethod {
   method: "CARTÃO DE CRÉDITO" | "CARTÃO DE DÉBITO" | "DINHEIRO";
@@ -50,6 +46,8 @@ interface DeliveryContextType {
   fetchCartProducts: () => void;
   addAddress: (address: UserAddress) => Promise<void>;
   fetchAddress: () => void;
+  deleteItemCart: (product: ProductCart) => Promise<void>;
+  updateQuantityProduct: (product: ProductCart) => void;
   cart: Cart[];
   cartProducts: ProductCart[];
   address: UserAddress | undefined;
@@ -74,6 +72,7 @@ export function DeliveryContextProvider({
 
   async function addToCart(product: ProductCart) {
     const { id, image, name, quantity, price, serial } = product;
+    
     const response = await api.post("/cart-products", {
       id,
       image,
@@ -86,9 +85,27 @@ export function DeliveryContextProvider({
     setCartProducts((state) => [response.data, ...state]);
   }
 
+  function updateQuantityProduct(product: ProductCart) {
+    const { id, image, name, price, quantity, serial } = product;
+    api.put(`/cart-products/${id}`, {
+      id,
+      image,
+      name,
+      price,
+      quantity,
+      serial,
+    });
+
+      api.get("/cart-products").then(async ({ data }) => {
+        setCartProducts(await data);
+      });
+
+  }
+
   function fetchCartProducts() {
     api.get("/cart-products").then(async ({ data }) => {
       setCartProducts(await data);
+      return await data;
     });
   }
 
@@ -114,6 +131,11 @@ export function DeliveryContextProvider({
     setAddress(response.data);
   }
 
+  async function deleteItemCart(item: ProductCart) {
+    const { id } = item;
+    api.delete(`/cart-products/${id}`);
+  }
+
   return (
     <DeliveryContext.Provider
       value={{
@@ -124,7 +146,9 @@ export function DeliveryContextProvider({
         fetchCartProducts,
         addAddress,
         fetchAddress,
-        address,
+        deleteItemCart,
+        updateQuantityProduct,
+        address
       }}
     >
       {children}

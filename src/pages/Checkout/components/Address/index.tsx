@@ -32,7 +32,7 @@ const newAddressFormSchema = z.object({
 type NewAddressFormInputs = z.infer<typeof newAddressFormSchema>;
 
 export function Address() {
-  const { addAddress } = useContext(DeliveryContext);
+  const { addAddress, address } = useContext(DeliveryContext);
 
   const { register, handleSubmit } = useForm<NewAddressFormInputs>({
     resolver: zodResolver(newAddressFormSchema),
@@ -64,29 +64,53 @@ export function Address() {
               type="text"
               placeholder="CEP"
               {...register("zip")}
+              value={address?.zip}
             />
-            <BaseInput type="text" placeholder="Rua" {...register("street")} />
+            <BaseInput
+              type="text"
+              placeholder="Rua"
+              {...register("street")}
+              required
+              value={address?.street}
+            />
           </ContainerColumn>
           <ContainerRow>
             <BaseInput
               type="number"
               placeholder="Número"
+              required
               {...register("number", { valueAsNumber: true })}
+              value={address?.number}
             />
             <ComplementoInput
               type="text"
               placeholder="Complemento"
               {...register("complement")}
+              value={address?.complement}
             />
           </ContainerRow>
           <ContainerRow>
             <BaseInput
               type="text"
               placeholder="Bairro"
+              required
               {...register("neighbourhood")}
+              value={address?.neighbourhood}
             />
-            <BaseInput type="text" placeholder="Cidade" {...register("city")} />
-            <BaseInput type="text" placeholder="UF" {...register("state")} />
+            <BaseInput
+              type="text"
+              placeholder="Cidade"
+              {...register("city")}
+              required
+              value={address?.city}
+            />
+            <BaseInput
+              type="text"
+              placeholder="UF"
+              {...register("state")}
+              required
+              value={address?.state}
+            />
           </ContainerRow>
           <ButtonSave type="submit">CADASTRAR</ButtonSave>
         </ContainerDataAddress>
