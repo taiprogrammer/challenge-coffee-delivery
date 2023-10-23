@@ -1,5 +1,4 @@
 import { ShoppingCart } from "phosphor-react";
-import currency from "currency.js";
 
 import {
   AddToCart,

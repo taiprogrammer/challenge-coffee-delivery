@@ -1,5 +1,5 @@
 import { Trash } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { DeliveryContext } from "../../../../../../contexts/DeliveryContext";
 import {
   ContainerProduct,

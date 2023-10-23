@@ -11,7 +11,6 @@ import {
   PriceShip,
   TotalPrice,
 } from "./styles";
-import { useContext } from "react";
 
 interface SelectedProductsProps {
   cartProducts: ProductCart[];

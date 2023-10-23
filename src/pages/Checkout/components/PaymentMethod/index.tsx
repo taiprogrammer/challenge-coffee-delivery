@@ -6,7 +6,6 @@ import {
   HeaderPaymentMethod,
   TitleHeader,
 } from "./styles";
-import { useState } from "react";
 
 export function PaymentMethod() {
   return (

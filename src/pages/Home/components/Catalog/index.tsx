@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { DeliveryContext } from "../../../../contexts/DeliveryContext";
+import { useEffect, useState } from "react";
 import { api } from "../../../../lib/axios";
 import { Card } from "./components/Card";
 import { CatalogContainer, ContainerProducts, TitleCatalog } from "./styles";

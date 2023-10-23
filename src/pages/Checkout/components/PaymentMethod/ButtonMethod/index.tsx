@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode, useContext, useState } from "react";
+import { ReactNode, useContext } from "react";
 import { ButtonMethodComponent } from "./style";
 import { DeliveryContext } from "../../../../../contexts/DeliveryContext";
 
