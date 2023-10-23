@@ -15,7 +15,7 @@ interface Product {
   serial: number;
 }
 
-interface ProductCart {
+export interface ProductCart {
   id: string;
   image: string;
   name: string;
@@ -51,6 +51,8 @@ interface DeliveryContextType {
   cart: Cart[];
   cartProducts: ProductCart[];
   address: UserAddress | undefined;
+  method: string;
+  chooseMethod: (method: string) => void;
 }
 
 export const DeliveryContext = createContext({} as DeliveryContextType);
@@ -70,9 +72,15 @@ export function DeliveryContextProvider({
 
   const [address, setAddress] = useState<UserAddress>();
 
+  const [method, setMethod] = useState<string>("");
+
+  function chooseMethod(method: string) {
+    setMethod(method);
+  }
+
   async function addToCart(product: ProductCart) {
     const { id, image, name, quantity, price, serial } = product;
-    
+
     const response = await api.post("/cart-products", {
       id,
       image,
@@ -96,10 +104,9 @@ export function DeliveryContextProvider({
       serial,
     });
 
-      api.get("/cart-products").then(async ({ data }) => {
-        setCartProducts(await data);
-      });
-
+    api.get("/cart-products").then(async ({ data }) => {
+      setCartProducts(await data);
+    });
   }
 
   function fetchCartProducts() {
@@ -148,7 +155,9 @@ export function DeliveryContextProvider({
         fetchAddress,
         deleteItemCart,
         updateQuantityProduct,
-        address
+        address,
+        method,
+        chooseMethod,
       }}
     >
       {children}

@@ -8,8 +8,15 @@ import {
   HaederDelivery,
   SectionDelivery,
 } from "./styles";
+import { useContext, useEffect } from "react";
+import { DeliveryContext } from "../../contexts/DeliveryContext";
 
 export function ConfirmedDevivery() {
+  const { fetchAddress, address, method } = useContext(DeliveryContext);
+
+  useEffect(() => {
+    fetchAddress();
+  }, [])
   return (
     <ContainerDelivery>
       <HaederDelivery>
@@ -23,8 +30,7 @@ export function ConfirmedDevivery() {
               <MapPin weight="fill" size={22} />
             </div>
             <span>
-              Entrega em <b>Rua João Daniel Martinelli, 102</b> Farrapos - Porto
-              Alegre, RS
+              Entrega em <b>Rua {address?.street}, {address?.number}</b> {address?.neighbourhood} - {address?.city}, {address?.state}
             </span>
           </ContainerOrderInfo>
           <ContainerOrderInfo infoColor="yellow">
@@ -40,7 +46,7 @@ export function ConfirmedDevivery() {
               <CurrencyDollar weight="fill" size={22} />
             </div>
             <span>
-              Pagamento na entrega <b>Cartão de Crédito</b>
+              Pagamento na entrega <b>{method}</b>
             </span>
           </ContainerOrderInfo>
         </BoxReview>

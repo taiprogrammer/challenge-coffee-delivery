@@ -41,7 +41,7 @@ export function Catalog() {
               price={item.price}
               serial={item.serial}
               id={item.id}
-              key={item.serial}
+              key={`item_${item.id}`}
             />
           ))}
         </ContainerProducts>

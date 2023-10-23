@@ -22,7 +22,7 @@ export function Header() {
   const addressName = address
     ? `${address?.city}, ${address?.state}`
     : "Cadastre um novo endereço";
-
+    
   useEffect(() => {
     fetchCartProducts();
     fetchAddress();

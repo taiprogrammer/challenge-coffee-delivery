@@ -27,7 +27,6 @@ export function Product({
 }: ProductProps) {
   const {
     deleteItemCart,
-    fetchCartProducts,
     updateQuantityProduct,
   } = useContext(DeliveryContext);
   const [newQuantity, setNewQuantity] = useState<number>(quantity);
@@ -48,7 +47,6 @@ export function Product({
       serial,
     };
     deleteItemCart(payload);
-    setTimeout(fetchCartProducts, 1000);
   }
 
   function handleUpdateQuantity(event: any) {
@@ -64,10 +62,6 @@ export function Product({
 
     updateQuantityProduct(payload);
   }
-
-  useEffect(() => {
-    fetchCartProducts();
-  }, [newQuantity]);
 
   return (
     <ContainerProduct>

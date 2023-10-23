@@ -167,22 +167,38 @@
   ],
   "cart-products": [
     {
-      "id": "capuccino",
-      "image": "/catalog/Type=Capuccino.png",
-      "name": "Capuccino",
-      "price": 9.9,
+      "id": "cremoso",
+      "image": "/catalog/Type=Expresso Cremoso.png",
+      "name": "Expresso Cremoso",
       "quantity": 1,
-      "serial": 7
+      "price": 9.9,
+      "serial": 3
+    },
+    {
+      "id": "americano",
+      "image": "/catalog/Type=Americano.png",
+      "name": "Expresso Americano",
+      "quantity": 1,
+      "price": 10,
+      "serial": 2
+    },
+    {
+      "id": "expresso",
+      "image": "/catalog/Type=Expresso.png",
+      "name": "Expresso Tradicional",
+      "quantity": 1,
+      "price": 9.9,
+      "serial": 1
     }
   ],
   "address": {
-    "zip": "68902-870",
-    "street": "Rua Hildemar Maia",
-    "number": 80,
+    "zip": "60320-780",
+    "street": "Vila da Luz",
+    "number": 78,
     "complement": "",
-    "neighbourhood": "Buritizal",
-    "city": "Macapá",
-    "state": "AP"
+    "neighbourhood": "Monte Castelo",
+    "city": "Fortaleza",
+    "state": "CE"
   },
   "requests": []
 }

@@ -14,10 +14,10 @@ import {
   TitleAddress,
 } from "./styles";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
-import { DeliveryContext } from "../../../../contexts/DeliveryContext";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { DeliveryContext } from "../../../../contexts/DeliveryContext";
 
 const newAddressFormSchema = z.object({
   zip: z.string(),
@@ -32,7 +32,7 @@ const newAddressFormSchema = z.object({
 type NewAddressFormInputs = z.infer<typeof newAddressFormSchema>;
 
 export function Address() {
-  const { addAddress, address } = useContext(DeliveryContext);
+  const { addAddress } = useContext(DeliveryContext);
 
   const { register, handleSubmit } = useForm<NewAddressFormInputs>({
     resolver: zodResolver(newAddressFormSchema),
@@ -64,52 +64,45 @@ export function Address() {
               type="text"
               placeholder="CEP"
               {...register("zip")}
-              value={address?.zip}
             />
             <BaseInput
+              required
               type="text"
               placeholder="Rua"
               {...register("street")}
-              required
-              value={address?.street}
             />
           </ContainerColumn>
           <ContainerRow>
             <BaseInput
+              required
               type="number"
               placeholder="Número"
-              required
               {...register("number", { valueAsNumber: true })}
-              value={address?.number}
             />
             <ComplementoInput
               type="text"
               placeholder="Complemento"
               {...register("complement")}
-              value={address?.complement}
             />
           </ContainerRow>
           <ContainerRow>
             <BaseInput
+              required
               type="text"
               placeholder="Bairro"
-              required
               {...register("neighbourhood")}
-              value={address?.neighbourhood}
             />
             <BaseInput
+              required
               type="text"
               placeholder="Cidade"
               {...register("city")}
-              required
-              value={address?.city}
             />
             <BaseInput
+              required
               type="text"
               placeholder="UF"
               {...register("state")}
-              required
-              value={address?.state}
             />
           </ContainerRow>
           <ButtonSave type="submit">CADASTRAR</ButtonSave>

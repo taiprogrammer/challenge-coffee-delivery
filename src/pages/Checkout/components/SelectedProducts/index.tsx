@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { DeliveryContext } from "../../../../contexts/DeliveryContext";
+import { useNavigate } from "react-router-dom";
+import { ProductCart } from "../../../../contexts/DeliveryContext";
 import { Product } from "./components/Product";
 import {
   ConfirmButton,
@@ -11,12 +11,17 @@ import {
   PriceShip,
   TotalPrice,
 } from "./styles";
+import { useContext } from "react";
 
-export function SelectedProducts() {
-  const { cartProducts, fetchCartProducts } = useContext(DeliveryContext);
+interface SelectedProductsProps {
+  cartProducts: ProductCart[];
+}
 
+export function SelectedProducts({ cartProducts }: SelectedProductsProps) {
+
+  const navigate = useNavigate();
   const sumPrices = cartProducts.reduce(
-    (acc, current) => acc + (current.quantity * current.price),
+    (acc, current) => acc + current.quantity * current.price,
     0
   );
 
@@ -39,9 +44,9 @@ export function SelectedProducts() {
     currency: "BRL",
   }).format(totalPrice);
 
-  useEffect(() => {
-    fetchCartProducts();
-  }, []);
+  function handleConfirm() {
+    navigate("/success");
+  }
 
   return (
     <ContainerSelectedProducts>
@@ -76,7 +81,7 @@ export function SelectedProducts() {
             <h2>{formattedTotalPrice}</h2>
           </TotalPrice>
         </ContainerReviewPrice>
-        <ConfirmButton>CONFIRMAR PEDIDO</ConfirmButton>
+        <ConfirmButton onClick={(e) => handleConfirm()}>CONFIRMAR PEDIDO</ConfirmButton>
       </ContainerOverview>
     </ContainerSelectedProducts>
   );
